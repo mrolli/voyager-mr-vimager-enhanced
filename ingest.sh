@@ -21,3 +21,4 @@ fi
 
 mv voyager_mr-vim*_source/* source/
 mv voyager_mr-vim*{.bin,.md5} firmwares/
+rmdir voyager_mr-vim*_source
