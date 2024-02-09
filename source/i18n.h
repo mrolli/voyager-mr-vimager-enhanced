@@ -1,0 +1,1 @@
+#define US_ACUT ALGR(KC_QUOT)
