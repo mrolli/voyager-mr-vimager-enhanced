@@ -41,8 +41,8 @@ const uint16_t PROGMEM combo0[] = { KC_TAB, KC_Q, COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_M, KC_COMMA, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_TAB, KC_W, COMBO_END};
-const uint16_t PROGMEM combo4[] = { KC_N, KC_1, COMBO_END};
-const uint16_t PROGMEM combo5[] = { KC_N, KC_2, COMBO_END};
+const uint16_t PROGMEM combo4[] = { MT(MOD_LSFT, KC_LBRC), KC_SLASH, COMBO_END};
+const uint16_t PROGMEM combo5[] = { MT(MOD_LSFT, KC_LBRC), MT(MOD_RSFT, KC_RBRC), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_GRAVE),
@@ -58,7 +58,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case KC_TAB:
             return TAPPING_TERM -50;
         case MT(MOD_LSFT, KC_A):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
         case MT(MOD_LCTL, KC_S):
             return TAPPING_TERM + 75;
         case MT(MOD_LALT, KC_D):
@@ -67,6 +67,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 75;
         case ALL_T(KC_G):
             return TAPPING_TERM + 75;
+        case MT(MOD_LSFT, KC_LBRC):
+            return TAPPING_TERM -75;
         case LT(1,KC_DELETE):
             return TAPPING_TERM -25;
         case KC_BSLS:
@@ -80,7 +82,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_LCTL, KC_L):
             return TAPPING_TERM + 75;
         case MT(MOD_RSFT, KC_SCLN):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
+        case MT(MOD_RSFT, KC_RBRC):
+            return TAPPING_TERM -75;
         case LT(1,KC_ENTER):
             return TAPPING_TERM -25;
         default:
