@@ -12,7 +12,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_EQUAL,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
-    KC_ESCAPE,      MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),KC_D,           MT(MOD_LGUI, KC_F),KC_G,                                           KC_H,           MT(MOD_RGUI, KC_J),KC_K,           MT(MOD_RALT, KC_L),MT(MOD_RCTL, KC_SCLN),KC_QUOTE,       
+    KC_ESCAPE,      MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),KC_D,           MT(MOD_LGUI, KC_F),ALL_T(KC_G),                                    MEH_T(KC_H),    MT(MOD_RGUI, KC_J),KC_K,           MT(MOD_RALT, KC_L),MT(MOD_LCTL, KC_SCLN),KC_QUOTE,       
     KC_LEFT_SHIFT,  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
                                                     KC_BSPC,        LT(1,KC_DELETE),                                LT(1,KC_ENTER), KC_SPACE
   ),
@@ -26,8 +26,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const uint16_t PROGMEM combo0[] = { KC_TAB, KC_Q, COMBO_END};
-const uint16_t PROGMEM combo1[] = { KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM combo2[] = { KC_COMMA, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo1[] = { KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM combo2[] = { KC_M, KC_COMMA, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_LEFT_SHIFT, KC_RIGHT_SHIFT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -55,7 +55,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 75;
         case MT(MOD_RALT, KC_L):
             return TAPPING_TERM + 75;
-        case MT(MOD_RCTL, KC_SCLN):
+        case MT(MOD_LCTL, KC_SCLN):
             return TAPPING_TERM + 75;
         case LT(1,KC_ENTER):
             return TAPPING_TERM -25;
