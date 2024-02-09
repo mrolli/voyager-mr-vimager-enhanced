@@ -14,11 +14,11 @@ fi
 
 unzip -o "$zipfile"
 
-if [ ! -d "voyager_mr-vimegar_source" ]; then
+if [ ! -d "voyager_mr-vimager_source" ]; then
   echo >&2 "No source directory found to ingest. Exiting."
   exit 1
 fi
 
-mv voyager_mr-vim*_source/* source/
-mv voyager_mr-vim*{.bin,.md5} firmwares/
+mv voyager_mr-vimager_source/* source/
+mv voyager_mr-vimager*{.bin,.md5} firmwares/
 rmdir voyager_mr-vim*_source
