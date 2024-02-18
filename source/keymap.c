@@ -9,15 +9,11 @@ enum custom_keycodes {
 
 
 
-enum tap_dance_codes {
-  DANCE_0,
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_EQUAL,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
-    KC_ESCAPE,      MT(MOD_LSFT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LALT, KC_D),MT(MOD_LGUI, KC_F),ALL_T(KC_G),                                    MEH_T(KC_H),    MT(MOD_RGUI, KC_J),TD(DANCE_0),    MT(MOD_LCTL, KC_L),MT(MOD_RSFT, KC_SCLN),KC_QUOTE,       
+    KC_ESCAPE,      MT(MOD_LSFT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LALT, KC_D),MT(MOD_LGUI, KC_F),ALL_T(KC_G),                                    MEH_T(KC_H),    MT(MOD_RGUI, KC_J),MT(MOD_LALT, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_RSFT, KC_SCLN),KC_QUOTE,       
     MT(MOD_LSFT, KC_LBRC),KC_Z,           KC_X,           KC_C,           KC_V,           LT(2,KC_B),                                     KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       MT(MOD_RSFT, KC_RBRC),
                                                     KC_BSPC,        LT(1,KC_DELETE),                                LT(1,KC_ENTER), KC_SPACE
   ),
@@ -60,13 +56,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_LSFT, KC_A):
             return TAPPING_TERM -75;
         case MT(MOD_LCTL, KC_S):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
         case MT(MOD_LALT, KC_D):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
         case MT(MOD_LGUI, KC_F):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
         case ALL_T(KC_G):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
         case MT(MOD_LSFT, KC_LBRC):
             return TAPPING_TERM -75;
         case LT(1,KC_DELETE):
@@ -74,13 +70,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case KC_BSLS:
             return TAPPING_TERM -50;
         case MEH_T(KC_H):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
         case MT(MOD_RGUI, KC_J):
-            return TAPPING_TERM + 75;
-        case TD(DANCE_0):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
+        case MT(MOD_LALT, KC_K):
+            return TAPPING_TERM -75;
         case MT(MOD_LCTL, KC_L):
-            return TAPPING_TERM + 75;
+            return TAPPING_TERM -75;
         case MT(MOD_RSFT, KC_SCLN):
             return TAPPING_TERM -75;
         case MT(MOD_RSFT, KC_RBRC):
@@ -99,6 +95,8 @@ void keyboard_post_init_user(void) {
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
+    [0] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,29,227}, {41,29,227}, {41,29,227}, {41,29,227}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,29,227}, {41,29,227}, {41,29,227}, {41,29,227}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
+
     [1] = { {76,244,238}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {76,244,238}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {0,0,0}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {0,0,0}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {0,0,0}, {0,0,0}, {0,0,0}, {40,233,255}, {40,233,255}, {40,233,255}, {0,0,0}, {76,244,238}, {41,255,255}, {40,233,255}, {40,233,255}, {40,233,255}, {41,255,255}, {76,244,238}, {139,235,255}, {139,235,255}, {139,235,255}, {139,235,255}, {255,218,204}, {76,244,238}, {139,235,255}, {139,235,255}, {139,235,255}, {139,235,255}, {255,218,204}, {0,0,0}, {0,0,0}, {0,0,0} },
 
     [2] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,255,255}, {41,255,255}, {41,255,255}, {0,0,0}, {0,0,0}, {152,255,255}, {152,255,255}, {152,255,255}, {41,255,255}, {0,0,0}, {0,0,0}, {152,255,255}, {152,255,255}, {152,255,255}, {41,255,255}, {0,0,0}, {0,0,0}, {152,255,255}, {152,255,255}, {152,255,255}, {41,255,255}, {0,0,0}, {41,255,255}, {152,255,255} },
@@ -125,6 +123,9 @@ void set_layer_color(int layer) {
 bool rgb_matrix_indicators_user(void) {
   if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
+    case 0:
+      set_layer_color(0);
+      break;
     case 1:
       set_layer_color(1);
       break;
@@ -152,73 +153,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-typedef struct {
-    bool is_press_action;
-    uint8_t step;
-} tap;
 
-enum {
-    SINGLE_TAP = 1,
-    SINGLE_HOLD,
-    DOUBLE_TAP,
-    DOUBLE_HOLD,
-    DOUBLE_SINGLE_TAP,
-    MORE_TAPS
-};
-
-static tap dance_state[1];
-
-uint8_t dance_step(tap_dance_state_t *state);
-
-uint8_t dance_step(tap_dance_state_t *state) {
-    if (state->count == 1) {
-        if (state->interrupted || !state->pressed) return SINGLE_TAP;
-        else return SINGLE_HOLD;
-    } else if (state->count == 2) {
-        if (state->interrupted) return DOUBLE_SINGLE_TAP;
-        else if (state->pressed) return DOUBLE_HOLD;
-        else return DOUBLE_TAP;
-    }
-    return MORE_TAPS;
-}
-
-
-void on_dance_0(tap_dance_state_t *state, void *user_data);
-void dance_0_finished(tap_dance_state_t *state, void *user_data);
-void dance_0_reset(tap_dance_state_t *state, void *user_data);
-
-void on_dance_0(tap_dance_state_t *state, void *user_data) {
-    if(state->count == 3) {
-        tap_code16(KC_K);
-        tap_code16(KC_K);
-        tap_code16(KC_K);
-    }
-    if(state->count > 3) {
-        tap_code16(KC_K);
-    }
-}
-
-void dance_0_finished(tap_dance_state_t *state, void *user_data) {
-    dance_state[0].step = dance_step(state);
-    switch (dance_state[0].step) {
-        case SINGLE_TAP: register_code16(KC_K); break;
-        case DOUBLE_TAP: register_code16(KC_K); register_code16(KC_K); break;
-        case DOUBLE_HOLD: register_code16(KC_LEFT_ALT); break;
-        case DOUBLE_SINGLE_TAP: tap_code16(KC_K); register_code16(KC_K);
-    }
-}
-
-void dance_0_reset(tap_dance_state_t *state, void *user_data) {
-    wait_ms(10);
-    switch (dance_state[0].step) {
-        case SINGLE_TAP: unregister_code16(KC_K); break;
-        case DOUBLE_TAP: unregister_code16(KC_K); break;
-        case DOUBLE_HOLD: unregister_code16(KC_LEFT_ALT); break;
-        case DOUBLE_SINGLE_TAP: unregister_code16(KC_K); break;
-    }
-    dance_state[0].step = 0;
-}
-
-tap_dance_action_t tap_dance_actions[] = {
-        [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
-};
