@@ -37,16 +37,14 @@ const uint16_t PROGMEM combo0[] = { KC_TAB, KC_Q, COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_M, KC_COMMA, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_TAB, KC_W, COMBO_END};
-const uint16_t PROGMEM combo4[] = { MT(MOD_LSFT, KC_LBRC), KC_SLASH, COMBO_END};
-const uint16_t PROGMEM combo5[] = { MT(MOD_LSFT, KC_LBRC), MT(MOD_RSFT, KC_RBRC), COMBO_END};
+const uint16_t PROGMEM combo4[] = { MT(MOD_LSFT, KC_LBRC), MT(MOD_RSFT, KC_RBRC), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_GRAVE),
     COMBO(combo1, KC_LBRC),
     COMBO(combo2, KC_RBRC),
     COMBO(combo3, US_ACUT),
-    COMBO(combo4, TG(1)),
-    COMBO(combo5, TG(2)),
+    COMBO(combo4, TG(2)),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -54,33 +52,33 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case KC_TAB:
             return TAPPING_TERM -50;
         case MT(MOD_LSFT, KC_A):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_LCTL, KC_S):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_LALT, KC_D):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_LGUI, KC_F):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case ALL_T(KC_G):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_LSFT, KC_LBRC):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -55;
         case LT(1,KC_DELETE):
             return TAPPING_TERM -25;
         case KC_BSLS:
             return TAPPING_TERM -50;
         case MEH_T(KC_H):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_RGUI, KC_J):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_LALT, KC_K):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_LCTL, KC_L):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_RSFT, KC_SCLN):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -25;
         case MT(MOD_RSFT, KC_RBRC):
-            return TAPPING_TERM -75;
+            return TAPPING_TERM -55;
         case LT(1,KC_ENTER):
             return TAPPING_TERM -25;
         default:
@@ -95,7 +93,7 @@ void keyboard_post_init_user(void) {
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [0] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,29,227}, {41,29,227}, {41,29,227}, {41,29,227}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,29,227}, {41,29,227}, {41,29,227}, {41,29,227}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
+    [0] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,218,204}, {41,218,204}, {41,218,204}, {41,218,204}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {41,218,204}, {41,218,204}, {41,218,204}, {41,218,204}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
     [1] = { {76,244,238}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {76,244,238}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {0,0,0}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {0,0,0}, {220,218,204}, {86,255,255}, {86,255,255}, {86,255,255}, {220,218,204}, {0,0,0}, {0,0,0}, {0,0,0}, {40,233,255}, {40,233,255}, {40,233,255}, {0,0,0}, {76,244,238}, {41,255,255}, {40,233,255}, {40,233,255}, {40,233,255}, {41,255,255}, {76,244,238}, {139,235,255}, {139,235,255}, {139,235,255}, {139,235,255}, {255,218,204}, {76,244,238}, {139,235,255}, {139,235,255}, {139,235,255}, {139,235,255}, {255,218,204}, {0,0,0}, {0,0,0}, {0,0,0} },
 
