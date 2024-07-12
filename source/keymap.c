@@ -2,6 +2,7 @@
 #include "version.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
+#define ML_SAFE_RANGE SAFE_RANGE
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -21,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     DM_PLY1,        RGB_SLD,        KC_F10,         KC_F11,         KC_F12,         RGB_MODE_FORWARD,                                LGUI(LCTL(LSFT(KC_4))),KC_MEDIA_PREV_TRACK,LCTL(KC_F4),    KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, DM_REC1,        
     DM_PLY2,        RGB_TOG,        KC_F7,          KC_F8,          KC_F9,          TOGGLE_LAYER_COLOR,                                KC_BRIGHTNESS_DOWN,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_BRIGHTNESS_UP,DM_REC2,        
     KC_TRANSPARENT, RGB_VAD,        KC_F4,          KC_F5,          KC_F6,          RGB_VAI,                                        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       CW_TOGG,        DM_RSTP,        
-    KC_TRANSPARENT, RGB_SPD,        KC_F1,          KC_F2,          KC_F3,          RGB_SPI,                                        KC_PAGE_UP,     KC_PGDN,        KC_HOME,        KC_END,         KC_CAPS,        KC_TRANSPARENT, 
+    KC_TRANSPARENT, RGB_SPD,        KC_F1,          KC_F2,          KC_F3,          RGB_SPI,                                        KC_PGDN,        KC_PAGE_UP,     KC_HOME,        KC_END,         KC_CAPS,        KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [2] = LAYOUT_voyager(
@@ -52,11 +53,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case KC_TAB:
             return TAPPING_TERM -55;
         case MT(MOD_LSFT, KC_LBRC):
-            return TAPPING_TERM -30;
+            return TAPPING_TERM -60;
         case KC_BSLS:
             return TAPPING_TERM -55;
         case MT(MOD_RSFT, KC_RBRC):
-            return TAPPING_TERM -30;
+            return TAPPING_TERM -60;
         default:
             return TAPPING_TERM;
     }
@@ -95,6 +96,9 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
+  if (rawhid_state.rgb_control) {
+      return false;
+  }
   if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
     case 0:
