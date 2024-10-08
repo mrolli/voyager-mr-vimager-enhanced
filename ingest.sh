@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 zipfile=$1
+prefix=zsa_voyager_mr-vimager
 
 if [ -z "$zipfile" ]; then
   echo >&2 "No zipfile provided. Exiting."
@@ -14,11 +15,11 @@ fi
 
 unzip -o "$zipfile"
 
-if [ ! -d "voyager_mr-vimager_source" ]; then
+if [ ! -d "${prefix}_source" ]; then
   echo >&2 "No source directory found to ingest. Exiting."
   exit 1
 fi
 
-mv voyager_mr-vimager_source/* source/
-mv voyager_mr-vimager*{.bin,.md5} firmwares/
-rmdir voyager_mr-vim*_source
+mv ${prefix}_source/* source/
+mv ${prefix}*{.bin,.md5} firmwares/
+rmdir ${prefix}_source
